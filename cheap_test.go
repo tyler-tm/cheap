@@ -3,6 +3,8 @@ package cheap
 import (
 	"sort"
 	"testing"
+
+	"go.uber.org/goleak"
 )
 
 func TestPushOnce(t *testing.T) {
@@ -101,4 +103,8 @@ func TestPeekEmpty(t *testing.T) {
 	if err == nil {
 		t.Errorf("No error thrown for Peeking from empty heap")
 	}
+}
+
+func TestMain(m *testing.M) {
+	goleak.VerifyTestMain(m)
 }
