@@ -4,3 +4,10 @@ A Priority Queue in Go that uses concurrency to return a value from Pop() in lin
 
 This was mostly just a quick playground for me to try using a single-item capacity buffered channel as a lock for shared memory (instead of the standard sync/mutex); in practical application, one should probably just leverage the container/heap library (by implementing the heap interface, like in `internalPriorityQueue.go`) and use their own goroutines around Peek() and Pop().
 
+## Usage
+
+- Call the constructor with `c := NewCHeap()`
+- `c.Push(object, priority)` your items
+- `c.Pop()` them off the queue
+- `c.Peek()` to see what's next, without affecting the queue
+
